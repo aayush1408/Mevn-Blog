@@ -1,17 +1,17 @@
 <template>
   <div id="app">
     <posts-blog v-bind:posts='posts' ></posts-blog>
-    
+    <add-blog  v-on:add-post='addedPost'></add-blog>
   </div>
 </template>
 
 <script>
-import post from './components/post.vue';    
+import addBlog from './components/addBlog.vue';    
 import postsBlog from './components/postsBlog.vue';  
 export default {
    components:{
     postsBlog,
-   
+    addBlog
   } ,
 
    data(){
@@ -31,7 +31,13 @@ export default {
       }]
          }
   },
-
+    methods:{
+             addedPost(newPost){
+                this.posts.push(newPost);
+                console.log(this.posts);
+        
+    }
+    }
   
 }
 </script>
