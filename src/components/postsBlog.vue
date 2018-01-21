@@ -1,15 +1,29 @@
 <template>
   <div>
-    <ul v-for="post in posts">
-      <li>{{post.message}} -- {{post.message}} </li>
-    </ul>
+    <div class="container" >
+      <post v-on:postDelete="deletePost(post)" v-for="post in posts" v-bind:post="post" ></post>
+     </div>
   </div>
 </template>
 
 <script>
-
+import Post from './post.vue';
+import addBlog from './addBlog.vue';
 export default {
-  props:['posts']
+
+props:['posts'], 
+  components:{
+    Post,
+    addBlog
+  },
+  methods:{
+    deletePost(post){
+      const postIndex = this.posts.indexOf(post);
+      this.posts.splice(postIndex,1);
+    },
+  
+  }
+
 }
 </script>
 
