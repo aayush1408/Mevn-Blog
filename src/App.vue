@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <posts-blog v-bind:posts='posts' ></posts-blog>
-    <add-blog v-on:add-post="addPost"></add-blog>
+    
   </div>
 </template>
 
@@ -10,7 +10,8 @@ import post from './components/post.vue';
 import postsBlog from './components/postsBlog.vue';  
 export default {
    components:{
-    'posts-blog':postsBlog
+    postsBlog,
+   
   } ,
 
    data(){
@@ -30,18 +31,7 @@ export default {
       }]
          }
   },
-  methods:{
-      addPost(newPost){
-      this.posts.push(newPost);
-    }
-  }
+
   
 }
 </script>
-
-<style>
-body{
-  margin: 0px;
-  font-family: 'Nunito SemiBold'
-}
-</style>
