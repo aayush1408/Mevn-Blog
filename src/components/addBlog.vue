@@ -3,9 +3,9 @@
     <div class="row">
       <div class="header"><h1>Add another post</h1></div>
       <label>Title</label>
-      <input type="text" v-model="newPost.title" class="input-group" ><br><br>
+      <input type="text" v-model="title" class="input-group" ><br><br>
       <label>Message</label>
-      <input type="text" v-model="newPost.message" class="input-group"><br><br>
+      <input type="text" v-model="message" class="input-group"><br><br>
       <button class="btn btn-sm btn-primary" @click="addPost">+</button>  
     </div>
     
@@ -17,17 +17,15 @@ export default {
 
   data(){
     return{
-    newPost:{
         title:'',
         message:''
-    }
     }
   },
   methods:{
     addPost(){
-     
-      this.$emit('add-post',this.newPost);
-      
+      const title = this.title;
+      const message = this.message;
+     this.$emit('add-post',{title,message});
     }
   } 
 }
